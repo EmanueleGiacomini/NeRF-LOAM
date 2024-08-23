@@ -16,8 +16,7 @@ import torch.nn.functional as F
 from pathlib import Path
 import open3d as o3d
 
-torch.classes.load_library(
-    "/home/pl21n4/Programmes/Vox-Fusion/third_party/sparse_octree/build/lib.linux-x86_64-cpython-38/svo.cpython-38-x86_64-linux-gnu.so")
+torch.classes.load_library("third_party/sparse_octree/build/lib.linux-x86_64-cpython-310/svo.cpython-310-x86_64-linux-gnu.so")
 
 
 def get_network_size(net):
