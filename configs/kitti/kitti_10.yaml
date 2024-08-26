@@ -5,7 +5,7 @@ exp_name: kitti/sqeuence10
 
 
 data_specs:
-  data_path: '/home/pl21n4/dataset/kitti/dataset/sequences/10'
+  data_path: '/data/kitti/dataset/sequences/10'
   use_gt: False
   max_depth: 70
   min_depth: 2.75
