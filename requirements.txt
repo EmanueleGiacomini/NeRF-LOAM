@@ -1,5 +1,5 @@
 matplotlib
-open3d
+open3d==0.18.0
 opencv-python
 PyYAML
 scikit-image

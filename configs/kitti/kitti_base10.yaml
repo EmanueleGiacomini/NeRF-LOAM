@@ -1,4 +1,4 @@
-log_dir: '/home/evsjtu2/disk1/dengjunyuan/running_logs/'
+log_dir: '/nerf_loam/logs/'
 decoder: lidar
 dataset: kitti
 
