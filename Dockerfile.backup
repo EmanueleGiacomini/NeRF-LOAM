@@ -47,7 +47,7 @@ RUN rm -rf requirements.txt third_party open3d-devel-linux-x86_64-cxx11-abi-0.18
 
 WORKDIR /nerf_loam
 
-ADD entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
+# ADD entrypoint.sh /entrypoint.sh
+# RUN chmod +x /entrypoint.sh
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+# ENTRYPOINT [ "/entrypoint.sh" ]
