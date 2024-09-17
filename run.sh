@@ -24,7 +24,7 @@ do
                 -e DATAROOT=/data/ \
                 -e DATASET=$dataset \
                 -e SEQUENCE=\"$seq\" \
-                nerf-loam-env \
+                nerf_loam_running_env \
                 /bin/bash -c "
         py_cmd="\"python demo/run.py configs/kitti/kitti_${seq}.yaml\""
         cmd="$docker_cmd $py_cmd"
