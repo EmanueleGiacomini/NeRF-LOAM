@@ -82,6 +82,7 @@ class Tracking:
             else:
                 self.do_tracking(share_data, current_frame, kf_buffer)
 
+        sleep(10)
         share_data.stop_mapping = True
         print("******* tracking process died *******")
 
