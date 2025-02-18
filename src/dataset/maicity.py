@@ -1,6 +1,4 @@
-import pypatchworkpp
 import os.path as osp
-
 import numpy as np
 import torch
 from glob import glob
@@ -8,8 +6,11 @@ from torch.utils.data import Dataset
 import sys
 from scipy.spatial import cKDTree
 
+# fmt: off
 patchwork_module_path = "/patchwork-plusplus/build/python_wrapper"
 sys.path.insert(0, patchwork_module_path)
+import pypatchworkpp
+# fmt: on
 
 params = pypatchworkpp.Parameters()
 # params.verbose = True

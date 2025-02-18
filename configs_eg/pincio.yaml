@@ -1,14 +1,14 @@
 base_config: configs/ncd/ncd.yaml
-
+dataset: kitti
 exp_name: vbr/campus
 
 data_specs:
-  data_path: "/data/vbr/vbr_slam/pincio/campus_pincio0_kitti/ouster_points"
+  data_path: "/data/vbr/vbr_slam/pincio/pincio_train0_kitti"
   use_gt: False
   max_depth: 40
   min_depth: 5
 
 tracker_specs:
-  start_frame: 0
+  start_frame: 50
   end_frame: -1
   read_offset: 1

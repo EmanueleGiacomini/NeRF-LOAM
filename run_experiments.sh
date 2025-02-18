@@ -1,16 +1,17 @@
 #!/bin/bash
 
-export DATAROOT=./datasets
+# export DATAROOT=./datasets
+export DATAROOT=/media/rvp-00/DATA1/datasets
 export CUDA_VISIBLE_DEVICES="0"
 
-experiments=("quad_easy" "pincio" "campus" "kitti_09" "maicity_00")
+experiments=("maicity_00" "kitti_09" "campus" "pincio" "quad_easy")
 
 for exp in ${experiments}
 do
     if [ -d ./logs/$exp ]; then
         continue
     fi
-    docker_cmd="docker run --name nerf_loam_${exp} -- rm -it \
+    docker_cmd="docker run --name nerf_loam_${exp} --rm -it \
         --shm-size=24576m --gpus all \
         -v ${DATAROOT}:/data \
         -v ./:/nerf_loam \
