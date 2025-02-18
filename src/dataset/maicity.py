@@ -1,3 +1,4 @@
+import pypatchworkpp
 import os.path as osp
 
 import numpy as np
@@ -7,9 +8,8 @@ from torch.utils.data import Dataset
 import sys
 from scipy.spatial import cKDTree
 
-patchwork_module_path ="/home/pl21n4/Programmes/patchwork-plusplus/build/python_wrapper"
+patchwork_module_path = "/patchwork-plusplus/build/python_wrapper"
 sys.path.insert(0, patchwork_module_path)
-import pypatchworkpp
 
 params = pypatchworkpp.Parameters()
 # params.verbose = True
@@ -60,14 +60,16 @@ class DataLoader(Dataset):
         T = cKDTree(Patchcenters)
         _, index = T.query(ground)
         if True:
-            groundcos = np.abs(np.sum(normals[index] * ground, axis=-1)/np.linalg.norm(ground, axis=-1))
+            groundcos = np.abs(
+                np.sum(normals[index] * ground, axis=-1)/np.linalg.norm(ground, axis=-1))
             # groundnorm = np.linalg.norm(ground, axis=-1)
             # groundcos = np.where(groundnorm > 10.0, np.ones(ground.shape[0]), groundcos)
 
         else:
             groundcos = np.ones(ground.shape[0])
         points = np.concatenate((ground, nonground), axis=0)
-        pointcos = np.concatenate((groundcos, np.ones(nonground.shape[0])), axis=0)
+        pointcos = np.concatenate(
+            (groundcos, np.ones(nonground.shape[0])), axis=0)
 
         return points, pointcos
 

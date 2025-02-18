@@ -1,3 +1,4 @@
+import pypatchworkpp
 import os.path as osp
 
 import numpy as np
@@ -8,9 +9,8 @@ from torch.utils.data import Dataset
 import sys
 from scipy.spatial import cKDTree
 
-patchwork_module_path ="/home/pl21n4/Programmes/patchwork-plusplus/build/python_wrapper"
+patchwork_module_path = "/patchwork-plusplus/build/python_wrapper"
 sys.path.insert(0, patchwork_module_path)
-import pypatchworkpp
 params = pypatchworkpp.Parameters()
 params.enable_RNR = False
 # params.verbose = True
@@ -33,7 +33,8 @@ class DataLoader(Dataset):
                                   ).reshape(4, 4)
         else:
             return np.array([[5.925493285036220747e-01, -8.038419275143061649e-01, 5.218676416200035417e-02, -2.422443415414985424e-01],
-                            [8.017167514002809803e-01, 5.948020209102693467e-01, 5.882863457495644127e-02,  3.667865561670570873e+00],
+                            [8.017167514002809803e-01, 5.948020209102693467e-01,
+                                5.882863457495644127e-02,  3.667865561670570873e+00],
                             [-7.832971094540422397e-02, 6.980134849334420320e-03, 9.969030746023688216e-01, 6.809443654823238434e-01]])
 
     def load_gt_pose(self):
@@ -68,11 +69,13 @@ class DataLoader(Dataset):
         T = cKDTree(Patchcenters)
         _, index = T.query(ground)
         if True:
-            groundcos = np.abs(np.sum(normals[index] * ground, axis=-1)/np.linalg.norm(ground, axis=-1))
+            groundcos = np.abs(
+                np.sum(normals[index] * ground, axis=-1)/np.linalg.norm(ground, axis=-1))
         else:
             groundcos = np.ones(ground.shape[0])
         points = np.concatenate((ground, nonground), axis=0)
-        pointcos = np.concatenate((groundcos, np.ones(nonground.shape[0])), axis=0)
+        pointcos = np.concatenate(
+            (groundcos, np.ones(nonground.shape[0])), axis=0)
 
         return points, pointcos
 
