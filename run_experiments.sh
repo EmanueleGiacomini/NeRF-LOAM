@@ -1,10 +1,11 @@
 #!/bin/bash
 
-# export DATAROOT=./datasets
-export DATAROOT=/media/rvp-00/DATA1/datasets
+export DATAROOT=/home/emanuelegiacomini/nl_data
+#export DATAROOT=/media/rvp-00/DATA1/datasets
 export CUDA_VISIBLE_DEVICES="0"
 
-experiments=("maicity_00" "kitti_09" "campus" "pincio" "quad_easy")
+# experiments=("maicity_00" "kitti_09" "campus" "pincio" "quad_easy")
+experiments=("kitti_09" "campus" "quad_easy" "pincio"  "maicity_00")
 
 for exp in ${experiments}
 do
@@ -14,7 +15,7 @@ do
     docker_cmd="docker run --name nerf_loam_${exp} --rm -it \
         --shm-size=24576m --gpus all \
         -v ${DATAROOT}:/data \
-        -v ./:/nerf_loam \
+        -v /home/emanuelegiacomini/NeRF-LOAM:/nerf_loam \
         -e CUDA_VISIBLE_DEVICES=\"$CUDA_VISIBLE_DEVICES\" \
         -e DATAROOT=/data/ \
         -e DATASET=$exp \

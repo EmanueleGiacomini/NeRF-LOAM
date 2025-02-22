@@ -260,7 +260,7 @@ def render_rays(
         chunk_size = num_points
     final_xyz = []
     xyz = 0
-    for i in range(0, num_points, chunk_size):
+    for i in range(0, num_points, chunk_size // 10):
         torch.cuda.empty_cache()
         chunk_samples = {name: s[i:i+chunk_size]
                          for name, s in samples_valid.items()}

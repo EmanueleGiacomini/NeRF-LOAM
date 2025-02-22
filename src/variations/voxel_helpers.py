@@ -94,7 +94,8 @@ class SparseVoxelOctreeRayIntersect(Function):
     def forward(ctx, voxelsize, n_max, points, children, ray_start, ray_dir):
         # HACK: avoid out-of-memory
         torch.cuda.empty_cache()
-        G = min(256, int(2 * 10 ** 9 / (points.numel() + children.numel())))
+        # G = min(256, int(2 * 10 ** 9 / (points.numel() + children.numel())))
+        G = min(64, int(2 * 10 ** 9 / (points.numel() + children.numel())))
         S, N = ray_start.shape[:2]
         K = int(np.ceil(N / G))
         H = K * G

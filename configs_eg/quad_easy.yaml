@@ -1,4 +1,4 @@
-base_config: configs/ncd/ncd.yaml
+base_config: configs/kitti/kitti.yaml
 dataset: kitti
 exp_name: ncd/quad_easy
 

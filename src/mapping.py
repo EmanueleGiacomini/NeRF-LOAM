@@ -78,7 +78,8 @@ class Mapping:
         self.dynamic_embeddings = None
 
         self.svo = torch.classes.svo.Octree()
-        self.svo.init(256*256*4, embed_dim, self.voxel_size)
+        # self.svo.init(256*256*4, embed_dim, self.voxel_size)
+        self.svo.init(128*128*4, embed_dim, self.voxel_size)
 
         self.frame_poses = []
         self.depth_maps = []
